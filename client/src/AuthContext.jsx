@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const baseurl = "https://api.tonsvalleyeducationtrust.org"; // Replace with actual base URL for production
+    // const baseurl = "http://localhost:"
     const navigate = useNavigate();
     const location = useLocation(); // Get the current location (URL)
 
