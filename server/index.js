@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const multer = require('multer');
-
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3001;
 
