@@ -256,7 +256,7 @@ const ImageUpload = () => {
                                     alt="Uploaded"
                                 />
                                 <CardContent>
-                                    <IconButton onClick={() => openDeleteDialog(image._id)}>
+                                    <IconButton className="z-50" onClick={() => openDeleteDialog(image._id)}>
                                         <DeleteIcon />
                                     </IconButton>
                                 </CardContent>
