@@ -90,7 +90,7 @@ export default function Footer() {
       <Divider className='my-7 bg-[#666]' />
 
       <div className="flex justify-between items-center flex-col lg:flex-row">
-        <p className='text-[#010101] mb-2 lg:mb-0'>© 2024 Tons Valley Education Trust. All rights reserved. Design & developed by Kartik dua </p>
+        <p className='text-[#010101] mb-2 lg:mb-0'>© 2024 Tons Valley Education Trust. All rights reserved. Design & developed by AP enterprises </p>
         <div className='flex gap-3'>
           <IconButton aria-label="email" className="text-[#010101]">
             <MailOutline />
