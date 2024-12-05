@@ -252,6 +252,7 @@ const ImageUpload = () => {
                                 <CardMedia
                                     component="img"
                                     height="140"
+                                    sx={{height:"140px"}}
                                     image={image.url}
                                     alt="Uploaded"
                                 />
