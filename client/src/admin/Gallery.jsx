@@ -259,8 +259,8 @@ const ImageUpload = () => {
                                 <CardContent>
                                     <IconButton sx={{
                                         position: "absolute",
-                                        top: 10,
-                                        right: 10,
+                                        bottom: 10,
+                                        left: 10,
                                         zIndex:50
                                     }}  onClick={() => openDeleteDialog(image._id)}>
                                         <DeleteIcon  />
