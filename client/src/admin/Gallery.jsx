@@ -248,7 +248,7 @@ const ImageUpload = () => {
                         <CircularProgress />
                     ) : (
                         images.map((image) => (
-                            <Card key={image._id} sx={{ width: 200, height:200, margin: 1 }}>
+                            <Card key={image._id} sx={{ position:"relative", width: 200, height:200, margin: 1 }}>
                                 <CardMedia
                                     component="img"
                                     height="140"
@@ -257,8 +257,13 @@ const ImageUpload = () => {
                                     alt="Uploaded"
                                 />
                                 <CardContent>
-                                    <IconButton className="z-50" onClick={() => openDeleteDialog(image._id)}>
-                                        <DeleteIcon />
+                                    <IconButton sx={{
+                                        position: "absolute",
+                                        top: 10,
+                                        right: 10,
+                                        zIndex:50
+                                    }}  onClick={() => openDeleteDialog(image._id)}>
+                                        <DeleteIcon  />
                                     </IconButton>
                                 </CardContent>
                             </Card>
