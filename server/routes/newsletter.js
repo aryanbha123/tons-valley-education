@@ -38,12 +38,11 @@ router.post('/newsletters', upload.single('document'), async (req, res) => {
     }
 
     const newPDF = new Newsletter({ title, documentLink: req.file.path }); // Assuming you have a Newsletter model
-
     try {
         await newPDF.save();
         res.status(200).json({ message: 'PDF uploaded successfully', pdfUrl });
     } catch (error) {
-        res.status(500).json({ message: 'Error saving PDF', error });
+        res.status(500).json({ message: 'Error saving PDF', error:error.message });
     }
 });
 
