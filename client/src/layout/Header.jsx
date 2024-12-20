@@ -110,9 +110,15 @@ export default function Header() {
                                 </>
                         } </Link>
                             <ul className={`${showDropDown ? 'h-auto' : 'hidden'} overflow-hidden list-none flex flex-col items-center pt-2 gap-2`}>
-                                <li><Link onClick={() => { alert("Please try again later ! ") }} >Latest Year</Link></li>
-                                <li><Link onClick={() => { alert("Please try again later ! ") }} >Previous Year</Link></li>
-                                <li><Link onClick={() => { alert("Please try again later ! ") }} >First Year</Link></li>
+                              
+                            {
+                                    !loading ? 
+                                    newsletters.map((item,id) => (
+                                        <li key={id} onClick={() => { window.location.href = `${item.documentLink}`  }} className='hover:text-gray-600 cursor-pointer '>{item.title}</li>
+                                    ))
+                                    :
+                                    <CircularProgress sx={{padding:1.4}} />
+                                }
                             </ul>
                         </li>
 

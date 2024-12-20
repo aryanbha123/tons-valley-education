@@ -62,7 +62,11 @@ const NewsletterManager = () => {
         try {
             if (editId) {
                 // Update newsletter
-                await axios.put(`${baseurl}/newsletters/${editId}`, formData);
+                await axios.put(`${baseurl}/newsletters/${editId}`, formData , {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                });
                 setEditId(null); // Reset editId after updating
             } else {
                 // Add new newsletter
