@@ -6,8 +6,8 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 // Configure Cloudinary
 cloudinary.config({
-    cloud_name: "drzyrq7d5",    // Your Cloudinary cloud name
-    api_key: "585179992638461",    // Your Cloudinary API key
+    cloud_name: "drzyrq7d5",   
+    api_key: "585179992638461",   
     api_secret: "3r7NuV7KipN0JTbtzfn4hEpGcOs", // Your Cloudinary API secret
 });
 
@@ -22,7 +22,7 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage });
 
-export { upload };
+
 // Route for uploading an image
 router.post('/upload', upload.single('image'), async (req, res) => {
     if (!req.file) {

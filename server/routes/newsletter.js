@@ -5,9 +5,23 @@ const path = require('path');
 const fs = require('fs');
 const Image = require('../models/image'); // Adjust the path as necessary for your Image model
 const Newsletter = require('../models/newsletter');
-const { upload } = require('./image');
 // Create uploads directory if it doesn't exist
+cloudinary.config({
+    cloud_name: "drzyrq7d5",   
+    api_key: "585179992638461",   
+    api_secret: "3r7NuV7KipN0JTbtzfn4hEpGcOs", // Your Cloudinary API secret
+});
 
+// Set up Cloudinary storage for multer
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'uploads', // Optional folder to store images
+        allowed_formats: ['jpg', 'jpeg', 'png', '.pdf'], // Allowed file formats
+    },
+});
+
+const upload = multer({ storage });
 
 // Route for uploading PDFs
 router.post('/newsletters', upload.single('document'), async (req, res) => {
