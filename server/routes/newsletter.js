@@ -4,25 +4,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const Image = require('../models/image'); // Adjust the path as necessary for your Image model
-const Newsletter = require('../models/newsletter')
+const Newsletter = require('../models/newsletter');
+const { upload } = require('./image');
 // Create uploads directory if it doesn't exist
-const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
 
-// Configure multer for file storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDir); // Store in uploads directory
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname); // Unique filename
-    }
-});
-
-// Initialize multer with the defined storage
-const upload = multer({ storage });
 
 // Route for uploading PDFs
 router.post('/newsletters', upload.single('document'), async (req, res) => {
