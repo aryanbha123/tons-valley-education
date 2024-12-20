@@ -37,8 +37,7 @@ router.post('/newsletters', upload.single('document'), async (req, res) => {
         return res.status(400).json({ message: 'Title is required' });
     }
 
-    const pdfUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-    const newPDF = new Newsletter({ title, documentLink: pdfUrl }); // Assuming you have a Newsletter model
+    const newPDF = new Newsletter({ title, documentLink: req.file.path }); // Assuming you have a Newsletter model
 
     try {
         await newPDF.save();
