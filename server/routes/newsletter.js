@@ -18,11 +18,16 @@ cloudinary.config({
 // Set up Cloudinary storage for multer
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
-        folder: 'uploads', // Optional folder to store images
-        allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'], // Allowed file formats
+    params: async (req, file) => {
+        const isPDF = file.mimetype === 'application/pdf';
+        return {
+            folder: 'uploads',
+            resource_type: isPDF ? 'raw' : 'auto', // 'raw' for PDFs, 'auto' for other types
+            allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'],
+        };
     },
 });
+
 
 const upload = multer({ storage });
 
@@ -37,7 +42,7 @@ router.post('/newsletters', upload.single('document'), async (req, res) => {
         return res.status(400).json({ message: 'Title is required' });
     }
 
-    const newPDF = new Newsletter({ title, documentLink: req.file.path }); // Assuming you have a Newsletter model
+    const newPDF = new Newsletter({ title, documentLink: req.file.path || req.file.secure_url });// Assuming you have a Newsletter model
     try {
         await newPDF.save();
         res.status(200).json({ message: 'PDF uploaded successfully', pdfUrl });
