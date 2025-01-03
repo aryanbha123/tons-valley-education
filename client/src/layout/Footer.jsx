@@ -55,7 +55,7 @@ export default function Footer() {
           <p className='text-start font-bold text-lg'>About Us</p>
           <p className='text-start' >Guniyal Gaon Girls Education Center is the unit of Tons Valley Education Trust also referred to as Sunny's Amanat.It is an educational trust focused on promoting the upliftment and empowerment of girl child through education.
 </p>
-          <p className='text-start text-indigo-500 cursor-pointer' onClick={()=>{window.location.href='/about/toons-trust'}}>Read More <ArrowRight/> </p>
+          <p className='text-start text-indigo-500 cursor-pointer' onClick={()=>{window.location.href='/about/tons-trust'}}>Read More <ArrowRight/> </p>
         </TextBox>
 
 

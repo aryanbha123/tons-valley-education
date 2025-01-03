@@ -34,7 +34,7 @@ export default function App() {
         <Suspense fallback={<div className='fixed top-0 left-0 h-[100vh] w-[100vw] flex justify-center items-center'> <CircularProgress /></div>}>
           <Routes>
             <Route path='/' element={<Layout wrappedComponents={<Home />} />} />
-            <Route path='/about/toons-trust' element={<Layout wrappedComponents={<About />} />} />
+            <Route path='/about/tons-trust' element={<Layout wrappedComponents={<About />} />} />
             <Route path='/donations/make-a-change' element={<Layout wrappedComponents={<Donations />} />} />
             <Route path='/gallery' element={<Layout wrappedComponents={< Gallery />} />} />
             <Route path='/stories' element={<Layout wrappedComponents={<Stories />} />} />

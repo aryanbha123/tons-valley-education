@@ -51,7 +51,7 @@ export default function Header() {
                 </div>
                 <div className="flex items-end list-none   gap-7 pb-7">
                     <li><Link href='/'>Home</Link></li>
-                    <li><Link href='/about/toons-trust'>About Us</Link></li>
+                    <li><Link href='/about/tons-trust'>About Us</Link></li>
                     <div className='flex flex-col items-center relative h-auto' onMouseEnter={() => setShowDropDown(true)} onMouseLeave={() => setShowDropDown(false)}>
                         <Link className='flex items-center'>Newsletters {
                             showDropDown ?
@@ -99,7 +99,7 @@ export default function Header() {
                 <div className={`absolute  top-24 overflow-hidden bg-white w-full left-0 ${showNav ? 'showMenu' : 'hideMenu'}`}>
                     <div className={`flex flex-col items-center list-none  gap-7 py-9`}>
                         <li><Link href='/'>Home</Link></li>
-                        <li><Link href="/about/toons-trust" className='text-black'>About Us</Link></li>
+                        <li><Link href="/about/tons-trust" className='text-black'>About Us</Link></li>
                         <li><Link onClick={() => setShowDropDown(!showDropDown)} className='text-black relative mr-2'>Newsletters {
                             showDropDown ?
                                 <>

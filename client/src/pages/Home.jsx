@@ -35,7 +35,7 @@ export default function Home() {
         <p className='mb-4 lg:block hidden'>
           The Trust provides stationery, school bags, umbrellas in the monsoon; thermals, socks and woolens in winter. It has an enviable library of books and a full-fledged computer lab.
         </p>
-        <a href='about/toons-trust' className='bg-clip-text bg-[#152b8a] text-transparent from-pink-500 to-red-500'>
+        <a href='about/tons-trust' className='bg-clip-text bg-[#152b8a] text-transparent from-pink-500 to-red-500'>
           read more {">"}<ArrowRight color='#000' />
         </a>
       </TextBox>
