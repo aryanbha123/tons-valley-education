@@ -1,33 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const path = require('path');
-
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const fs = require('fs');
-const Image = require('../models/image'); // Adjust the path as necessary for your Image model
 const Newsletter = require('../models/newsletter');
-// Create uploads directory if it doesn't exist
+
+// Cloudinary configuration
 cloudinary.config({
     cloud_name: "drzyrq7d5",   
     api_key: "585179992638461",   
-    api_secret: "3r7NuV7KipN0JTbtzfn4hEpGcOs", // Your Cloudinary API secret
+    api_secret: "3r7NuV7KipN0JTbtzfn4hEpGcOs",
 });
 
-// Set up Cloudinary storage for multer
+// Multer storage configuration for Cloudinary
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    params: async (req, file) => {
-        const isPDF = file.mimetype === 'application/pdf';
-        return {
-            folder: 'uploads',
-            resource_type: isPDF ? 'raw' : 'auto', // 'raw' for PDFs, 'auto' for other types
-            allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'],
-        };
+    params: {
+        folder: 'uploads', // Optional folder to store files
+        allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'], // Allowed file formats
+        resource_type: 'auto', // Automatically detect the resource type
     },
 });
-
 
 const upload = multer({ storage });
 
@@ -42,12 +35,13 @@ router.post('/newsletters', upload.single('document'), async (req, res) => {
         return res.status(400).json({ message: 'Title is required' });
     }
 
-    const newPDF = new Newsletter({ title, documentLink: req.file.path || req.file.secure_url });// Assuming you have a Newsletter model
     try {
+        const newPDF = new Newsletter({ title, documentLink: req.file.secure_url }); // Use secure_url from Cloudinary
         await newPDF.save();
-        res.status(200).json({ message: 'PDF uploaded successfully', pdfUrl });
+        res.status(200).json({ message: 'PDF uploaded successfully', documentLink: req.file.secure_url });
     } catch (error) {
-        res.status(500).json({ message: 'Error saving PDF', error:error.message });
+        console.error('Error saving PDF:', error);
+        res.status(500).json({ message: 'Error saving PDF', error: error.message });
     }
 });
 
@@ -79,13 +73,13 @@ router.get('/newsletters/:id', async (req, res) => {
 router.put('/newsletters/:id', upload.single('document'), async (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
-    const documentLink = req.file ? req.file.path : null;
+    const documentLink = req.file ? req.file.secure_url : null; // Use secure_url from Cloudinary
 
     try {
         const updatedNewsletter = await Newsletter.findByIdAndUpdate(
             id,
             { title, documentLink: documentLink || undefined, uploadedAt: Date.now() },
-            { new: true } // return the updated document
+            { new: true } // Return the updated document
         );
         if (!updatedNewsletter) {
             return res.status(404).json({ message: 'Newsletter not found' });
@@ -110,10 +104,14 @@ router.delete('/newsletters/:id', async (req, res) => {
     }
 });
 
-
-router.get('/get/news',async (req,res) => {
-    const f = await  Newsletter.find();
-    res.json(f);
-})
+// Additional route to fetch all newsletters
+router.get('/get/news', async (req, res) => {
+    try {
+        const newsletters = await Newsletter.find();
+        res.json(newsletters);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching newsletters', error: error.message });
+    }
+});
 
 module.exports = router;
