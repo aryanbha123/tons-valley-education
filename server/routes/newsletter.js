@@ -36,7 +36,10 @@ router.post('/newsletters', upload.single('document'), async (req, res) => {
     }
 
     try {
-        const newPDF = new Newsletter({ title, documentLink: req.file.secure_url }); // Use secure_url from Cloudinary
+        if(req.file.path){
+            console.log(req.file.path);
+        }
+        const newPDF = new Newsletter({ title, documentLink: req.file.path }); // Use secure_url from Cloudinary
         await newPDF.save();
         res.status(200).json({ message: 'PDF uploaded successfully', documentLink: req.file.secure_url });
     } catch (error) {

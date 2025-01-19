@@ -1,6 +1,6 @@
 import React from 'react'
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import ProtectRoute from './hooks/ProtectRoute';
@@ -48,6 +48,7 @@ export default function App() {
               <Route path='/admin/newsletters' element={<AdminNewsletter></AdminNewsletter>} />
               <Route path='/admin/gallery' element={<AdmdinGallery></AdmdinGallery>} />
             </Route>
+            <Route path='/tonsvalleyeducationtrustdehradun' element={<Navigate to={'/'}></Navigate>} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -9,7 +9,7 @@ const port = process.env.PORT || 3001;
 
 const URI = "mongodb+srv://aryan:Aryan123@cluster0.ym6ob.mongodb.net/tonsvalley?retryWrites=true&w=majority&appName=Cluster0"
 app.use(cookieParser());
-const allowedOrigins = ['https://www.tonsvalleyeducationtrust.org', 'http://localhost:3000'];
+const allowedOrigins = ['https://www.tonsvalleyeducationtrust.org', 'http://localhost:3001'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
