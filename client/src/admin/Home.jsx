@@ -54,41 +54,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* 2nd Div - Text Content Management */}
-        <div 
-          className="border p-6 bg-gray-100 rounded-lg shadow-lg flex flex-col justify-between"
-          onClick={showContactDeveloperPopup} // Trigger the popup on click
-        >
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Text Content Management</h2>
-          <p className="text-gray-600">Edit or update the text content displayed on the website.</p>
-          <button className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition">
-            Manage Text
-          </button>
-        </div>
-
-        {/* 3rd Div - Web Images Management */}
-        <div 
-          className="border p-6 bg-gray-100 rounded-lg shadow-lg flex flex-col justify-between"
-          onClick={showContactDeveloperPopup} // Trigger the popup on click
-        >
-          <h2 className="text-xl font-semibold text-gray-800">Manage Web Images</h2>
-          <p className="mt-4 text-gray-600">Upload, edit, or delete images used on the website.</p>
-          <button className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition">
-            Manage Images
-          </button>
-        </div>
-
-        {/* 4th Div - Donation Requests Section */}
-        <div 
-          className="border p-6 bg-red-100 text-red-700 rounded-lg shadow-lg flex flex-col justify-between"
-          onClick={navigateToDonationPage} // Navigate to the donation page on click
-        >
-          <h2 className="text-xl font-semibold">Donation Requests</h2>
-          <p className="mt-4">Review real-time donation requests and track the progress of donations.</p>
-          <button 
-            className="mt-6 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500 transition">
-            View Donation Page
-          </button>
-        </div>
+      
 
         {/* 5th Div - Manage Newsletters Section */}
         <div 

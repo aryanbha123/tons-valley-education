@@ -3,15 +3,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const cookieParser = require('cookie-parser');
-const path = require('path');
-const multer = require('multer');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3001;
 
 const URI = "mongodb+srv://aryan:Aryan123@cluster0.ym6ob.mongodb.net/tonsvalley?retryWrites=true&w=majority&appName=Cluster0"
 app.use(cookieParser());
-const allowedOrigins = ['https://www.tonsvalleyeducationtrust.org'];
+const allowedOrigins = ['https://www.tonsvalleyeducationtrust.org', 'http://localhost:3000'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
