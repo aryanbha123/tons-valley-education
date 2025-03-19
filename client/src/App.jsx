@@ -35,10 +35,11 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Layout wrappedComponents={<Home />} />} />
             <Route path='/about/tons-trust' element={<Layout wrappedComponents={<About />} />} />
+            <Route path='/about/toons-trust' element={<Navigate to="/"/>} />
             <Route path='/donations/make-a-change' element={<Layout wrappedComponents={<Donations />} />} />
             <Route path='/gallery' element={<Layout wrappedComponents={< Gallery />} />} />
             <Route path='/stories' element={<Layout wrappedComponents={<Stories />} />} />
-
+        
             <Route path='/login' element={<LoginPage />} />
             <Route path="/request-reset-password" element={<RequestResetPassword/>} />
             <Route path="/reset-password/:token" element={<ResetPassword/>} />
