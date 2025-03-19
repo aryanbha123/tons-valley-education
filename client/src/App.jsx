@@ -50,7 +50,7 @@ export default function App() {
               <Route path='/admin/gallery' element={<AdmdinGallery></AdmdinGallery>} />
             </Route>
             <Route path='/tonsvalleyeducationtrustdehradun' element={<Navigate to={'/'}></Navigate>} />
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<Navigate to="/"/>} />
           </Routes>
         </Suspense>
       </AuthProvider>
