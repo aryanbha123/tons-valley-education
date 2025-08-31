@@ -23,8 +23,7 @@ router.post('/register', async (req, res) => {
         }
 
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
+        const hashedPassword = password;
         const newUser = new User({
             email,
             password: hashedPassword,
@@ -52,7 +51,7 @@ router.post('/login', async (req, res) => {
         }
 
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = password == user.password;
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
